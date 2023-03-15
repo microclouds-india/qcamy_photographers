@@ -1,0 +1,57 @@
+class DiaryModel {
+  DiaryModel({
+    required this.message,
+    required this.data,
+    required this.status,
+    required this.response,
+  });
+
+  String message;
+  List<Datum> data;
+  String status;
+  String response;
+
+  factory DiaryModel.fromJson(Map<String, dynamic> json) => DiaryModel(
+        message: json["message"] ?? "",
+        data:
+            List<Datum>.from(json["data"]?.map((x) => Datum.fromJson(x)) ?? []),
+        status: json["status"],
+        response: json["response"] ?? "",
+      );
+}
+
+class Datum {
+  Datum({
+    required this.orderId,
+    required this.date,
+    required this.name,
+    required this.userId,
+    required this.status,
+    required this.bookingDate,
+    required this.bookingPlace,
+    required this.phone,
+    required this.alternateNumber,
+  });
+
+  String orderId;
+  String date;
+  String name;
+  String userId;
+  String status;
+  String bookingDate;
+  String bookingPlace;
+  String phone;
+  String alternateNumber;
+
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+        orderId: json["order_id"] ?? "",
+        date: json["date"] ?? "",
+        name: json["name"] ?? "",
+        userId: json["user_id"] ?? "",
+        status: json["status"] ?? "",
+        bookingDate: json["booking_date"] ?? "",
+        bookingPlace: json["booking_place"] ?? "",
+        phone: json["phone"] ?? "",
+        alternateNumber: json["alternate_number"] ?? "",
+      );
+}
